@@ -11,7 +11,6 @@ tr 'A-Za-z0-9=!"#€%&/()' 'n-za-mN-ZA-M=!"#€%&/()0-9'
 If characters outside allowed ones are used as input, raise ValueError.
 '''
 
-from asyncio.windows_events import NULL
 import timeit
 import pytest
 import mycrypt
