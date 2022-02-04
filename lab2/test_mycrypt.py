@@ -11,6 +11,7 @@ tr 'A-Za-z0-9=!"#€%&/()' 'n-za-mN-ZA-M=!"#€%&/()0-9'
 If characters outside allowed ones are used as input, raise ValueError.
 '''
 
+from asyncio.windows_events import NULL
 import timeit
 import pytest
 import mycrypt
@@ -42,14 +43,7 @@ def test_invalid_char(invalid_input):
         mycrypt.encode(invalid_input)
 
 
-@pytest.mark.parametrize("invalid_input", [])
-def test_invalid_types(invalid_input):
-    '''Invalid parameter types should raise TypeError'''
-    with pytest.raises(TypeError):
-        mycrypt.encode(invalid_input)
-
-
-@pytest.mark.parametrize("invalid_input", [2])
+@pytest.mark.parametrize("invalid_input", [['asd', 3.3]])
 def test_invalid_types(invalid_input):
     '''Invalid parameter types should raise TypeError'''
     with pytest.raises(TypeError):
