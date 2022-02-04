@@ -49,6 +49,20 @@ def test_invalid_types(invalid_input):
         mycrypt.encode(invalid_input)
 
 
+@pytest.mark.parametrize("invalid_input", [2])
+def test_invalid_types(invalid_input):
+    '''Invalid parameter types should raise TypeError'''
+    with pytest.raises(TypeError):
+        mycrypt.encode(invalid_input)
+
+
+@pytest.mark.parametrize("too_big_input", ['a'*1001])
+def test_too_large_input(too_big_input):
+    '''Too big input should raise ValueError'''
+    with pytest.raises(ValueError):
+        mycrypt.encode(too_big_input)
+
+
 def test_timing():
     '''Test whether encoding runs in approximately constant time, repetitions
     kept low to make test fast, use smallest measured time.
